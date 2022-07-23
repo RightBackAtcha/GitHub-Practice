@@ -7,7 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-I./include",
+                "src/glad.c",
                 "${file}",
+                "-lglfw3dll",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
