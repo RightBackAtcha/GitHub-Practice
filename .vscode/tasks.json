@@ -8,9 +8,9 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "-I./include",
+                "-I./lib",
                 "src/glad.c",
                 "${file}",
-                "-lglfw3dll",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
@@ -30,6 +30,9 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-I./include",
+                "-I./lib",
+                "src/glad.c",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
