@@ -1,8 +1,15 @@
 #include <iostream>
-#include <vector>
+#include <fstream>
 #include <string>
-#include <thread>
+
+// Includes header file that I created
+#include "practiceFuncs.hpp"
+
 
 int main(){
-     return 0;
+     std::string fileName = "test";
+     std::ofstream test(fileName + ".txt", std::ios::app);
+
+     func::sortAlphabet(fileName);
+
 }
