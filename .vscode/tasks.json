@@ -6,10 +6,6 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-g",
-                "-I${workspaceFolder}\\include",
-                "-L${workspaceFolder}\\lib",
-                "${workspaceFolder}\\*.cpp",
-                "${workspaceFolder}\\src\\glad.c",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
