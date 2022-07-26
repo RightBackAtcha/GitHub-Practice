@@ -1,6 +1,7 @@
 // Header that includes different functions to be used throughout C++ files
 #pragma once
 #include <string>
+#include <vector>
 
 namespace func{
     int sortAlphabet(std::string fileName){ 
@@ -17,6 +18,7 @@ namespace func{
             ++lineCount;
         }
         std::string strArray[lineCount];
+        std::vector<int> strVector(lineCount);
         inputStrings.clear();
         inputStrings.seekg(0);
 
@@ -27,7 +29,9 @@ namespace func{
         }
         for(int x = 0; x < lineCount; x++){
             for(int y = 0; y < strArray[x].size(); y++){
-
+                if(strArray[x][y] == 'A'){
+                    
+                }
             }
         }
 
