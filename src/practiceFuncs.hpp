@@ -113,13 +113,13 @@ namespace jord{
                 return -1;
             }
         }
-        while(usage != strVector){ // While loop that outputs 
+        while(usage != strVector){ // While loop that looks for the smallest numerical value aka the first letter alphabetically
             int smallestVal = 26;
             for(int x = 0; x < strVector.size(); x++){
                 if((strVector[x] <= smallestVal) && strVector[x] != 0){
                     smallestVal = strVector[x];
                 }
-            }
+            } // Outputs string whos first element has the lowest numerical value
             for(int x = 0; x < strVector.size(); x++){  
                 if(strVector[x] == smallestVal){
                     outputStrings << strArray[x] << "\n";
