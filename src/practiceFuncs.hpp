@@ -10,9 +10,9 @@ namespace func{
 
         std::string temp;
         std::ifstream inputStrings;
-        inputStrings.open(fileName + ".txt");
+        inputStrings.open("..\\" + fileName + ".txt");
         std::ofstream outputStrings;
-        outputStrings.open(fileName + "_output.txt");
+        outputStrings.open("..\\" + fileName + "_output.txt");
 
         while(getline(inputStrings, temp)){
             ++lineCount;
@@ -24,13 +24,12 @@ namespace func{
 
         while(getline(inputStrings, temp)){
             strArray[ix] = temp;
-            std::cout << strArray[ix] << "\n";
             ix++;
         }
         for(int x = 0; x < lineCount; x++){
             for(int y = 0; y < strArray[x].size(); y++){
-                if(strArray[x][y] == 'A'){
-                    
+                if(strArray[x][y] == 'a' || strArray[x][y] == 'A'){
+                    std::cout << strArray[x];
                 }
             }
         }

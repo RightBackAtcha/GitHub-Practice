@@ -8,7 +8,7 @@
 
 int main(){
      std::string fileName = "test";
-     std::ofstream test(fileName + "..\\.txt", std::ios::app);
+     std::ofstream test("..\\" + fileName + ".txt", std::ios::app);
 
      func::sortAlphabet(fileName);
 
