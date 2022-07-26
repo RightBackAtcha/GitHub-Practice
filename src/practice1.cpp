@@ -7,9 +7,13 @@
 
 
 int main(){
-     std::string fileName = "test";
+     std::string fileName;
+
+     std::cout << "Name of file to be alphabetically sorted.\n";
+     std::cin >> fileName;
      std::ofstream test("..\\" + fileName + ".txt", std::ios::app);
 
-     func::sortAlphabet(fileName);
+     jord::sortAlphabet(fileName);
 
+     return 0;
 }
