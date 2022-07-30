@@ -4,7 +4,7 @@
 using namespace std;
 
 void gameResponse(char spaces[]);
-bool checkWinner(char spaces[], );
+bool checkWinner(char spaces[]);
 
 int main(){ // Simple game of tic-tac-toe made using C++
     int playerInput = 0, aiInput = 0;
