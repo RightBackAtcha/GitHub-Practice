@@ -5,27 +5,54 @@ using namespace std;
 
 void gameResponse(char spaces[]);
 bool checkWinner(char spaces[]);
+char aiInput(char spaces[]);
 
 int main(){ // Simple game of tic-tac-toe made using C++
-    int playerInput = 0, aiInput = 0;
+    int playerInput = 0;
     string player1, player2;
     int temp;
-    char spaces[9];
+    char spaces[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     int turns = 0;
 
     cout << "[1] Singleplayer\n[2] Multiplayer\n";
     cin >> temp;
     if(temp == 1){
-        cout << "Player Name...(X)";
+        cout << "Player Name...(X)\n";
         cin >> player1;
-        while(turns <= 9 || (checkWinner(spaces) == true) || (checkWinner(spaces) != true)){
-
+        while(turns < 9 || checkWinner(spaces) == false){
+            cout << "What space would you like to take (1 - 9)\n";
+            while(playerInput == 0){
+                cin >> playerInput;
+                playerInput = playerInput - 1;
+                if(playerInput > 9 || playerInput < 1){
+                    cout << "Error! Invalid input.\n";
+                    playerInput = 0;
+                }
+                else if(spaces[playerInput] == 'X' || spaces[playerInput] == 'O'){
+                    cout << "Error! Space is already taken.\n";
+                    playerInput = 0;
+                }
+            }
+            spaces[playerInput] = 'X';
+            turns++;
+            gameResponse(spaces);
+            
+            if(checkWinner(spaces)){
+                cout << "3 in a row! You win!\n";
+                return 1;
+            }
         }
+        if(!checkWinner(spaces)){
+            cout << "You lose!\n";
+            return -1;
+        } else
+            cout << "Tie Game!";
+            return 0;
     }
     else if(temp == 2){
-        cout << "Player 1 Name... (X)";
+        cout << "Player 1 Name... (X)\n";
         cin >> player1;
-        cout << "Player 2 Name... (O)";
+        cout << "Player 2 Name... (O)\n";
         cin >> player2;
     }
     if(checkWinner(spaces)){
@@ -44,11 +71,11 @@ void gameResponse(char spaces[]){
     cout << "   |   |   \n ";
     cout << spaces[0]; cout << " | "; cout << spaces[1]; cout << " | "; cout << spaces[2];
     cout << " \n   |   |   \n";
-    cout << "---------\n";
+    cout << "-----------\n";
     cout << "   |   |   \n "; 
     cout << spaces[3]; cout << " | "; cout << spaces[4]; cout << " | "; cout << spaces[5];
-    cout << "\n   |   |   \n "; 
-    cout << "---------\n";
+    cout << "\n   |   |   \n"; 
+    cout << "-----------\n";
     cout << "   |   |   \n "; 
     cout << spaces[6]; cout << " | "; cout << spaces[7]; cout << " | "; cout << spaces[8];
     cout << "\n   |   |   \n"; 
@@ -102,4 +129,9 @@ bool checkWinner(char spaces[]){
     else if(spaces[2] == 'O' && spaces[4] == 'O' && spaces[6] == 'O'){
         return false;
     }
+    else
+        return NULL;
+}
+char aiInput(char spaces[]){
+
 }

@@ -1,8 +1,8 @@
-Abracadabra
-Coolio
-Call of Duty
-Jessica
-Jordan Smith
-Veronica
-Zombies
-Zoinks
+ABRACADABRA
+CALL OF DUTY
+COOLIO
+JESSICA
+JORDAN SMITH
+VERONICA
+ZOINKS
+ZOMBIES
