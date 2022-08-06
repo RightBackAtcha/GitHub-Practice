@@ -27,7 +27,7 @@ int main(){ // Simple game of tic-tac-toe made using C++
         cout << "Player Name...(X)\n";
         cin >> player1;
         while(turns < 9 || checkWinner(spaces) == false){
-            cout << "What space would you like to take (1 - 9) " << player1 << "\n";
+            cout << "What space would you like to take (1 - 9) " << player1 << "?\n";
             while(playerInput == 0){
                 cin >> playerInput;
                 if(playerInput > 9 || playerInput < 1){
