@@ -34,6 +34,7 @@ int main(){
         cout << "Player Name...(X)\n";
         cin >> player1;
         while(turns < 9 || checkWinner(spaces) == -1){
+            this_thread::sleep_for(chrono::milliseconds(1000));            
             cout << "What space would you like to take (1 - 9) " << player1 << "?\n";
             while(playerInput == 0){
                 cin >> playerInput;
@@ -46,32 +47,92 @@ int main(){
                     playerInput = 0;
                 }
             }
-            playerInput = playerInput - 1;
+            playerInput -=1;
             spaces[playerInput] = 'X';
             playerInput = 0;
-            aiInput(spaces, ai);
             turns++;
             gameResponse(spaces);
 
+            // Checks if X has won the game
+            if(checkWinner(spaces) == 1){
+                cout << "3 in a row! You Win!\n";
+                this_thread::sleep_for(chrono::milliseconds(3500));
+                return 1;
+            }
+            this_thread::sleep_for(chrono::milliseconds(1500));          
+            aiInput(spaces, ai);
+            turns++;
+            cout << "\n\n";
+            gameResponse(spaces);
+
+            // Checks if O has won the game
             if(checkWinner(spaces) == -1){
                 cout << "You Lose...\n";
-                this_thread::sleep_for(chrono::milliseconds(3500));                return -1;
+                this_thread::sleep_for(chrono::milliseconds(3500));                
+                return -1;
             }
         }
-        if(checkWinner(spaces) == 1){
-            cout << "3 in a row! You Win!\n";
-            this_thread::sleep_for(chrono::milliseconds(3500));
-            return 1;
-        } else
-            cout << "Tie Game!";
-            this_thread::sleep_for(chrono::milliseconds(3500));
-            return 0;
+        cout << "Tie Game!";
+        this_thread::sleep_for(chrono::milliseconds(3500));
+        return 0;
     }
     else if(temp == 2){ // Multiplayer component of main game loop
         cout << "Player 1 Name... (X)\n";
         cin >> player1;
         cout << "Player 2 Name... (O)\n";
         cin >> player2;
+        while(turns < 9){
+            cout << "What space would you like to take (1 - 9) " << player1 << "?\n";
+            while(playerInput == 0){
+                cin >> playerInput;
+                if(playerInput > 9 || playerInput < 1){
+                    cout << "Error! Invalid input.\n";
+                    playerInput = 0;
+                }
+                else if(spaces[playerInput-1] == 'X' || spaces[playerInput-1] == 'O'){
+                    cout << "Error! Space is already taken.\n";
+                    playerInput = 0;
+                }
+            }
+            playerInput -=1;
+            spaces[playerInput] = 'X';
+            playerInput = 0;
+            turns ++;
+            gameResponse(spaces);
+            // Checks if Player 1 has won the game
+            if(checkWinner(spaces) == 1){
+                cout << player1 << "has won the game!";
+                this_thread::sleep_for(chrono::milliseconds(3500));
+                return 1;
+            }
+
+            cout << "What space would you like to take (1 - 9) " << player2 << "?\n";
+            while(playerInput == 0){
+                cin >> playerInput;
+                if(playerInput > 9 || playerInput < 1){
+                    cout << "Error! Invalid input.\n";
+                    playerInput = 0;
+                }
+                else if(spaces[playerInput-1] == 'X' || spaces[playerInput-1] == 'O'){
+                    cout << "Error! Space is already taken.\n";
+                    playerInput = 0;
+                }
+            }
+            playerInput -=1;
+            spaces[playerInput] = 'O';
+            playerInput = 0;
+            turns ++;
+            gameResponse(spaces);
+            // Checks if Player 2 has won the game
+            if(checkWinner(spaces) == -1){
+                cout << player2 << " has won the game!";
+                this_thread::sleep_for(chrono::milliseconds(3500));                
+                return -1;
+            }
+        }
+        cout << "Tie Game!";
+        this_thread::sleep_for(chrono::milliseconds(3500));
+        return 0;
     }
 
     return 0;
