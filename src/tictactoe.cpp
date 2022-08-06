@@ -1,11 +1,14 @@
 #include <iostream>
 #include <string>
+#include <random>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
 void gameResponse(char spaces[]);
 bool checkWinner(char spaces[]);
-char aiInput(char spaces[]);
+void aiInput(char spaces[], default_random_engine);
 
 int main(){ // Simple game of tic-tac-toe made using C++
     int playerInput = 0;
@@ -14,39 +17,48 @@ int main(){ // Simple game of tic-tac-toe made using C++
     char spaces[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
     int turns = 0;
 
+    // Random number generator based on device seed used for AI pick
+    random_device rnd;
+    default_random_engine ai(rnd());
+
     cout << "[1] Singleplayer\n[2] Multiplayer\n";
     cin >> temp;
     if(temp == 1){
         cout << "Player Name...(X)\n";
         cin >> player1;
         while(turns < 9 || checkWinner(spaces) == false){
-            cout << "What space would you like to take (1 - 9)\n";
+            cout << "What space would you like to take (1 - 9) " << player1 << "\n";
             while(playerInput == 0){
                 cin >> playerInput;
-                playerInput = playerInput - 1;
                 if(playerInput > 9 || playerInput < 1){
                     cout << "Error! Invalid input.\n";
                     playerInput = 0;
                 }
-                else if(spaces[playerInput] == 'X' || spaces[playerInput] == 'O'){
+                else if(spaces[playerInput-1] == 'X' || spaces[playerInput-1] == 'O'){
                     cout << "Error! Space is already taken.\n";
                     playerInput = 0;
                 }
             }
+            playerInput = playerInput - 1;
             spaces[playerInput] = 'X';
+            playerInput = 0;
+            aiInput(spaces, ai);
             turns++;
             gameResponse(spaces);
-            
+
             if(checkWinner(spaces)){
                 cout << "3 in a row! You win!\n";
+                this_thread::sleep_for(chrono::microseconds(3500));
                 return 1;
             }
         }
         if(!checkWinner(spaces)){
             cout << "You lose!\n";
+            this_thread::sleep_for(chrono::microseconds(3500));
             return -1;
         } else
             cout << "Tie Game!";
+            this_thread::sleep_for(chrono::microseconds(3500));
             return 0;
     }
     else if(temp == 2){
@@ -129,9 +141,14 @@ bool checkWinner(char spaces[]){
     else if(spaces[2] == 'O' && spaces[4] == 'O' && spaces[6] == 'O'){
         return false;
     }
-    else
-        return NULL;
-}
-char aiInput(char spaces[]){
 
+    return NULL;
+}
+void aiInput(char spaces[], default_random_engine ai){
+    uniform_int_distribution<int> gen(0, 8);
+    int output = gen(ai);
+    while(spaces[output] == 'X' || spaces[output] == 'O'){
+        output = gen(ai);
+    }
+    spaces[output] = 'O';
 }
