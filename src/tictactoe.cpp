@@ -48,17 +48,17 @@ int main(){ // Simple game of tic-tac-toe made using C++
 
             if(checkWinner(spaces)){
                 cout << "3 in a row! You win!\n";
-                this_thread::sleep_for(chrono::microseconds(3500));
+                this_thread::sleep_for(chrono::milliseconds(3500));
                 return 1;
             }
         }
         if(!checkWinner(spaces)){
             cout << "You lose!\n";
-            this_thread::sleep_for(chrono::microseconds(3500));
+            this_thread::sleep_for(chrono::milliseconds(3500));
             return -1;
         } else
             cout << "Tie Game!";
-            this_thread::sleep_for(chrono::microseconds(3500));
+            this_thread::sleep_for(chrono::milliseconds(3500));
             return 0;
     }
     else if(temp == 2){
