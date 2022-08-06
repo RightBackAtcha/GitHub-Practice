@@ -50,6 +50,7 @@ int main(){
             playerInput -=1;
             spaces[playerInput] = 'X';
             playerInput = 0;
+<<<<<<< HEAD
             turns++;
             gameResponse(spaces);
 
@@ -65,6 +66,22 @@ int main(){
             cout << "\n\n";
             gameResponse(spaces);
 
+=======
+            turns++;
+            gameResponse(spaces);
+
+            // Checks if X has won the game
+            if(checkWinner(spaces) == 1){
+                cout << "3 in a row! You Win!\n";
+                this_thread::sleep_for(chrono::milliseconds(3500));
+                return 1;
+            }
+            this_thread::sleep_for(chrono::milliseconds(1500));          
+            aiInput(spaces, ai);
+            turns++;
+            gameResponse(spaces);
+
+>>>>>>> d638b325415afea295ef917191edeac0180f4989
             // Checks if O has won the game
             if(checkWinner(spaces) == -1){
                 cout << "You Lose...\n";
