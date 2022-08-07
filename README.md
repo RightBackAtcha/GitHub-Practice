@@ -5,4 +5,6 @@ FINISHED - Currently in the process of learning how to create header files and i
 
 Created first header file and in the process of creating different practice functions for fun
 
-In process of creating Tic-Tac-Toe game using C++
+FINISHED - In process of creating Tic-Tac-Toe game using C++
+
+Create Pong 2D game using SFML
