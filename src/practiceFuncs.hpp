@@ -11,11 +11,11 @@ namespace jord{
         int ix = 0;
 
         std::string temp;
-        std::string exitPath = ("..\\" + fileName + "_output.txt");
+        std::string exitPath = ("..\\data\\" + fileName + "_output.txt");
         std::ifstream inputStrings;
-        inputStrings.open("..\\" + fileName + ".txt", std::ios::app);
+        inputStrings.open("..\\data" + fileName + ".txt", std::ios::app);
         std::ofstream outputStrings;
-        outputStrings.open("..\\" + fileName + "_output.txt");
+        outputStrings.open(exitPath);
 
         while(getline(inputStrings, temp)){ // Counts total amount of lines found in input file
             ++lineCount;
