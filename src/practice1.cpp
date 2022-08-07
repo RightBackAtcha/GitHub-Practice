@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
 
      std::cout << "Name of file to be alphabetically sorted.\n";
      std::cin >> fileName;
-     std::ofstream inputFile("../data/" + fileName + ".txt", std::ios::app);
+     std::ofstream inputFile("..\\data\\" + fileName + ".txt", std::ios::app);
 
      // Check header file for more information on this function
      jord::sortAlphabet(fileName);

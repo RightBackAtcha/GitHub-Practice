@@ -22,14 +22,19 @@
         },
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe build active file",
+            "label": "g++.exe - Build and debug active file SFML",
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
+                "${file}",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
                 "-o",
-                "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}\\bin\\${fileBasenameNoExtension}.exe",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
+                "-I${workspaceFolder}\\include",
+                "-L${workspaceFolder}\\lib"
             ],
             "options": {
                 "cwd": "${fileDirname}"

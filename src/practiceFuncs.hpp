@@ -13,7 +13,7 @@ namespace jord{
         std::string temp;
         std::string exitPath = ("..\\data\\" + fileName + "_output.txt");
         std::ifstream inputStrings;
-        inputStrings.open("..\\data" + fileName + ".txt", std::ios::app);
+        inputStrings.open("..\\data\\" + fileName + ".txt", std::ios::app);
         std::ofstream outputStrings;
         outputStrings.open(exitPath);
 
