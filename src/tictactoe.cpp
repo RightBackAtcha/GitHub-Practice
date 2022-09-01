@@ -170,10 +170,10 @@ int checkWinner(char spaces[]){
     else if(spaces[6] == 'O' && spaces[7] == 'O' && spaces[8] == 'O'){
         return -1;
     }
-    else if(spaces[1] == 'X' && spaces[3] == 'X' && spaces[6] == 'X'){
+    else if(spaces[0] == 'X' && spaces[3] == 'X' && spaces[6] == 'X'){
         return 1;
     } 
-    else if(spaces[1] == 'O' && spaces[3] == 'O' && spaces[6] == 'O'){
+    else if(spaces[0] == 'O' && spaces[3] == 'O' && spaces[6] == 'O'){
         return -1;
     } 
     else if(spaces[1] == 'X' && spaces[4] == 'X' && spaces[7] == 'X'){

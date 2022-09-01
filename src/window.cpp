@@ -68,11 +68,11 @@ int main(){
                     paddle1.move(0.f, -20.f);
                 }
             }
-            end.setString("Game Over, You Win!");
-            if(posBall.x <= 0){
+            ballMovement(ball, posBall);
+            if(posBall.x >= 1280 ){
                 end.setString("Game Over, You Win!");
             }
-            else if(posBall.x >= 1280){
+            else if(posBall.x <= 0){
                 end.setString("Game Over, You Lost!");
             }
             aiMovement(paddle2, pos2);
@@ -99,5 +99,5 @@ void aiMovement(sf::RectangleShape &paddle, sf::Vector2f pos){
 
 }
 void ballMovement(sf::CircleShape &ball, sf::Vector2f pos){
-
+    ball.move(-20.f, 0.f);
 }
