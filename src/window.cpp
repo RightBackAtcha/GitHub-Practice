@@ -2,7 +2,7 @@
 #include "SFML/Graphics.hpp"
 
 void aiMovement(sf::RectangleShape&, sf::Vector2f);
-void ballMovement(sf::CircleShape&, sf::Vector2f);
+void ballMovement(sf::FloatRect&, sf::FloatRect&, sf::FloatRect&, sf::Vector2f&);
 
 int main(){
     // Settings used when creating window
@@ -42,6 +42,11 @@ int main(){
     sf::FloatRect paddleBox2 = paddle2.getGlobalBounds();
     sf::FloatRect ballBox = ball.getGlobalBounds();
 
+    // Ball speed parameters
+    sf::Vector2f ballSpeed;
+    ballSpeed.x = -10.f;
+    ballSpeed.y = 0.f;
+
     // Runs program as long as window remains open
     while(mainWindow.isOpen()){
         sf::Event event;
@@ -50,8 +55,6 @@ int main(){
         sf::Vector2f pos1 = paddle1.getPosition();
         sf::Vector2f pos2 = paddle2.getPosition();
         sf::Vector2f posBall = ball.getPosition();
-
-        sf::Vector2f ballSpeed;
 
         while(mainWindow.pollEvent(event)){
             // When event type = closed, window is closed and loop ends
@@ -68,17 +71,23 @@ int main(){
                     paddle1.move(0.f, -20.f);
                 }
             }
-            end.setString("Game Over, You Win!");
+            if(paddleBox1.intersects(ballBox)){
+                ballSpeed.x = -ballSpeed.x;
+                ballSpeed.y = -ballSpeed.y;
+            }
+            else if(paddleBox2.intersects(ballBox)){
+                ballSpeed.x = -ballSpeed.x;
+                ballSpeed.y = -ballSpeed.y;
+            }
+            ball.move(ballSpeed.x, ballSpeed.y);
             if(posBall.x <= 0){
                 end.setString("Game Over, You Win!");
             }
             else if(posBall.x >= 1280){
                 end.setString("Game Over, You Lost!");
             }
+            ballMovement(ballBox, paddleBox1, paddleBox2, ballSpeed);
             aiMovement(paddle2, pos2);
-            if(paddleBox1.intersects(ballBox)){
-
-            }
 
         }
         mainWindow.clear(sf::Color::Black);
@@ -98,6 +107,13 @@ int main(){
 void aiMovement(sf::RectangleShape &paddle, sf::Vector2f pos){
 
 }
-void ballMovement(sf::CircleShape &ball, sf::Vector2f pos){
-
+void ballMovement(sf::FloatRect &ball, sf::FloatRect &paddle1, sf::FloatRect &paddle2, sf::Vector2f &ballSpeed){
+    if(paddle1.intersects(ball)){
+        ballSpeed.x = -ballSpeed.x;
+        ballSpeed.y = -ballSpeed.y;
+    }
+    else if(paddle2.intersects(ball)){
+        ballSpeed.x = -ballSpeed.x;
+        ballSpeed.y = -ballSpeed.y;
+    }
 }
