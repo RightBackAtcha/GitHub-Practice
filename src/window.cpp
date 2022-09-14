@@ -71,6 +71,7 @@ int main(){
                     paddle1.move(0.f, -20.f);
                 }
             }
+<<<<<<< HEAD
             if(paddleBox1.intersects(ballBox)){
                 ballSpeed.x = -ballSpeed.x;
                 ballSpeed.y = -ballSpeed.y;
@@ -81,9 +82,13 @@ int main(){
             }
             ball.move(ballSpeed.x, ballSpeed.y);
             if(posBall.x <= 0){
+=======
+            ballMovement(ball, posBall);
+            if(posBall.x >= 1280 ){
+>>>>>>> d67dd77007809ba300c2dd27e389547dca023cd2
                 end.setString("Game Over, You Win!");
             }
-            else if(posBall.x >= 1280){
+            else if(posBall.x <= 0){
                 end.setString("Game Over, You Lost!");
             }
             ballMovement(ballBox, paddleBox1, paddleBox2, ballSpeed);
@@ -107,6 +112,7 @@ int main(){
 void aiMovement(sf::RectangleShape &paddle, sf::Vector2f pos){
 
 }
+<<<<<<< HEAD
 void ballMovement(sf::FloatRect &ball, sf::FloatRect &paddle1, sf::FloatRect &paddle2, sf::Vector2f &ballSpeed){
     if(paddle1.intersects(ball)){
         ballSpeed.x = -ballSpeed.x;
@@ -116,4 +122,8 @@ void ballMovement(sf::FloatRect &ball, sf::FloatRect &paddle1, sf::FloatRect &pa
         ballSpeed.x = -ballSpeed.x;
         ballSpeed.y = -ballSpeed.y;
     }
+=======
+void ballMovement(sf::CircleShape &ball, sf::Vector2f pos){
+    ball.move(-20.f, 0.f);
+>>>>>>> d67dd77007809ba300c2dd27e389547dca023cd2
 }
