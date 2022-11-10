@@ -72,14 +72,15 @@ namespace jord{
             std::cin >> temp;
 
             if(temp == num && guessNum == 1){
-                std::cout << "Good job! You guessed it on your first guess!";
+                std::cout << "Good job! You got it on your first guess!";
                 return 1;
             }
             else if(temp == num){
-                std::cout << "Good job! You guessed it in " << (guessNum) << " guesses!";
+                std::cout << "Good job! You got it in " << (guessNum) << " guesses!";
                 return 1;
             }
             else if(guessNum > 2){
+                std::cout << "The number was: " << num << "\n";
                 std::cout << "Tough luck chump. You didn't get it at all...";
                 return 0;
             }
