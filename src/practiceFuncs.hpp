@@ -6,7 +6,7 @@
 #include <random>
 
 namespace jord{
-    // Ssorts txt files alphabetically (sorts only by first letter of string currently)
+    // Sorts txt files alphabetically (sorts only by first letter of string currently)
     int sortAlphabet(std::string fileName){  
         int lineCount = 0;
         int ix = 0;
