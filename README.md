@@ -7,4 +7,4 @@ Created first header file and in the process of creating different practice func
 
 FINISHED - In process of creating Tic-Tac-Toe game using C++
 
-Create Pong 2D game using SFML
+FINISHED - Create number guessing game
