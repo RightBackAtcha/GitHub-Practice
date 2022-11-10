@@ -6,7 +6,7 @@
 #include <random>
 
 namespace jord{
-    // Function that sorts txt files alphabetically (sorts only by first letter of string currently)
+    // Ssorts txt files alphabetically (sorts only by first letter of string currently)
     int sortAlphabet(std::string fileName){  
         int lineCount = 0;
         int ix = 0;
@@ -52,6 +52,7 @@ namespace jord{
         ShellExecuteA(NULL, "open", exitPath.c_str(), NULL, NULL, 0);
         return 0;
     }
+    // Number guess game that allow you to input max value and you have 3 chances to guess (from 0 to your inputted max value)
     int numberGuess(int maxNum){
         // Var that stores number of guesses used
         int guessNum = 1;
